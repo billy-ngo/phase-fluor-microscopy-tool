@@ -132,6 +132,7 @@ On macOS the `Ctrl` shortcuts use `⌘`.
 | `Setup.bat`, `Launch.bat` | Windows: one-time install, and start |
 | `setup_macos.sh`, `Launch.command` | macOS: one-time install, and start |
 | `test_core.py` | Tests |
+| `LICENSE` | MIT licence |
 
 `.venv/` (the Python environment) and `launch-log.txt` are created in this
 folder by the scripts.
@@ -140,6 +141,10 @@ folder by the scripts.
 
 Written by [billy-ngo](https://github.com/billy-ngo) and
 [chipashvili](https://github.com/chipashvili).
+
+## License
+
+MIT; see [LICENSE](LICENSE).
 
 ## Troubleshooting
 
