@@ -1,0 +1,15 @@
+# Python environment and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Created when the app runs
+launch-log.txt
+
+# Data and exports
+*.nd2
+*.mp4
+*.zip
+
+.DS_Store
