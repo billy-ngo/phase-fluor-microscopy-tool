@@ -299,6 +299,17 @@ def test_video_writer():
             check(True, "an empty frame list raises")
 
 
+def test_version():
+    import re
+    check(re.fullmatch(r"\d+\.\d+(\.\d+)?", mt.__version__) is not None,
+          f"the version is numbers separated by dots, got {mt.__version__!r}")
+    changelog = Path(__file__).resolve().with_name("CHANGELOG.md")
+    if changelog.is_file():
+        newest = re.search(r"^## (\S+)", changelog.read_text(encoding="utf-8"), re.M)
+        check(newest is not None and newest.group(1) == mt.__version__,
+              f"the newest entry in CHANGELOG.md should be version {mt.__version__}")
+
+
 def run_all():
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]
     failed = 0

@@ -15,8 +15,15 @@ and lets the user interactively tune the look of the exported MP4:
   * Export videos, per-channel TIFF frames, strips and timeline figures.
 
 Run:    python microscopy_timelapse.py [file.nd2]
+        python microscopy_timelapse.py --version
 """
 from __future__ import annotations
+
+# The one place the version is set. It is shown in the window title, printed
+# by --version and written to every settings file. CHANGELOG.md lists what
+# changed in each version.
+__version__ = "1.0"
+APP_NAME = "Microscopy Timelapse Processor"
 
 import math
 import os
@@ -3297,6 +3304,7 @@ class MetadataExporter:
     def collect(mw: "MainWindow") -> dict:
         d = mw._data
         meta: dict = {
+            "software": {"name": APP_NAME, "version": __version__},
             "export_timestamp": _datetime.datetime.now().isoformat(timespec="seconds"),
             "source": {
                 "path": d.source_path if d is not None else None,
@@ -4124,7 +4132,7 @@ class TimelineDialog(QDialog):
 class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle("Microscopy Timelapse Processor")
+        self.setWindowTitle(f"{APP_NAME} {__version__}")
         # 1200x920 fits on 13" MacBook screens (1440x900 logical) with the
         # menu bar and Dock visible. Windows users with larger monitors can
         # resize freely.
@@ -6694,7 +6702,11 @@ class MainWindow(QMainWindow):
 # ===========================================================================
 
 def main() -> int:
+    if "--version" in sys.argv[1:]:
+        print(f"{APP_NAME} {__version__}")
+        return 0
     app = QApplication(sys.argv)
+    app.setApplicationVersion(__version__)
     app.setStyle("Fusion")  # required for full QSS support on all platforms
     # Preload the default theme so there's no flash of a different style
     # before MainWindow's combo applies its initial value.

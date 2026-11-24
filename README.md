@@ -4,6 +4,8 @@ A desktop app for Windows and macOS that reads Nikon `.nd2` timelapse files
 with phase, GFP and mCherry channels and exports videos, TIFF frames and figure
 panels, with adjustable display ranges, a scale bar and a timer.
 
+Current version: **1.0** (see [Versions](#versions)).
+
 ## Requirements
 
 - Windows 10 or 11, or macOS 11 or later
@@ -132,10 +134,21 @@ On macOS the `Ctrl` shortcuts use `⌘`.
 | `Setup.bat`, `Launch.bat` | Windows: one-time install, and start |
 | `setup_macos.sh`, `Launch.command` | macOS: one-time install, and start |
 | `test_core.py` | Tests |
+| `CHANGELOG.md` | What changed in each version |
 | `LICENSE` | MIT licence |
 
 `.venv/` (the Python environment) and `launch-log.txt` are created in this
 folder by the scripts.
+
+## Versions
+
+The version is shown in the window title, printed by
+`python microscopy_timelapse.py --version`, and written into every settings
+file the app saves (under `software`), so an export can be traced to the
+version that made it. [CHANGELOG.md](CHANGELOG.md) lists what changed in each
+version; each one is tagged in the repository (`v1.0`) and can be downloaded
+from the [Releases](https://github.com/billy-ngo/phase-fluor-microscopy-tool/releases)
+page.
 
 ## Authors
 
